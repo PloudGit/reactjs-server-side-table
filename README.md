@@ -7,6 +7,10 @@ A React module that can be used for rendering tables with dynamically paginated 
 - Searching
 - Language support (Currently -> English and Turkish)
 
+## Installation
+
+``npm install reactjs-server-side-table``
+
 ## API
 |Option|Description|Required|Default Value|
 | --- | --- | --- | --- |
