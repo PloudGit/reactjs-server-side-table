@@ -1,6 +1,6 @@
 {
   "name": "reactjs-server-side-table",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "private": false,
   "description": "A server side table for React",
   "main": "./dist/index.js",
