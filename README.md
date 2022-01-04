@@ -6,6 +6,7 @@ A React module that can be used for rendering tables with dynamically paginated 
 - Sorting by columns
 - Searching
 - Language support (Currently -> English and Turkish)
+- Styless design. You can style the table as you like
 
 ## Installation
 
