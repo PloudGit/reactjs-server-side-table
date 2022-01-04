@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+# ReactJs Server Side Table
+A React module that can be used for rendering tables with dynamically paginated data.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Quick Features
+- Dynamic pagination
+- Sorting by columns
+- Searching
+- Language support (Currently -> English and Turkish)
 
-## Available Scripts
+## API
+|Option| Description|
+| --- | --- |
+| tableColumns | Columns of the table. Must be same format with the example code. Since this module uses `react-table` as a base package, for more advance usage, you can check out the `react-table` docs and 
+use the column properties there.|
+| tableData | Array of data that is currently displayed on the table |
+| totalDataCount | Total data count that table will be displayed on the all pages. This is used for arranging pagination |
+| pageSizes | Array of how many data table shows in a page. **Default=[10, 20, 30, 40, 50]**. You can switch between the numbers for changing how many data will be displayed in a page |
+| defaultSortBy | Initial sorting column and direction value. **Default is ascending sorting of the first column** |
+| getTableInfo | Option for returning current table information, such as: pageIndex, pageSize, searchText, sortBy, sortDir. You can get the table's current information and get data according to this information |
+| language | Language of the table. **Default="tr"**. Supported values for this options: "tr" for Turkish and "en" for English |
+| tableStyle | Inline style for table's `<table>` tag |
+| theadStyle | Inline style for table's `<thead>` tag |
+| thStyle | Inline style for table's `<th>` tag |
+| tbodyStyle | Inline style for table's `<tbody>` tag |
+| trStyle | Inline style for table's `<tr>` tag |
+| tdStyle | Inline style for table's `<td>` tag |
 
-In the project directory, you can run:
 
-### `npm start`
+## Sample Code
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**NOTE**: Column accessor values must match with data element keys. For example if accessor value is `ticket_id`, then data should be `[{ticket_id: 1, ...etc}, ...etc]`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```js
+import React, { useEffect, useState } from 'react';
+import ServerSideTable from 'reactjs-server-side-table';
 
-### `npm test`
+  function App() {
+    const columns =  [
+        {
+          Header: "Ticket No",
+          accessor: 'ticket_id'
+        },
+        {
+          Header: `Reference`,
+          accessor: 'reference',
+          Cell: ({ row: { original } }) => (
+            <div>
+                {original.reference ? original.reference : '-'}
+            </div>
+          )
+        }
+      ]
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    const [ticketList, setTicketList] = useState([]);
+    const [ticketCount, setTicketCount] = useState(0);
+    const [tableInfo, setTableInfo] = useState({});
 
-### `npm run build`
+    useEffect(() => {
+  
+      fetchTickets();
+  
+    }, [tableInfo]);
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    const fetchTickets = () => {
+        //fetch new data with tableInfo state
+    }
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    return (
+      <div>
+        {
+          ticketList.length > 0 && ticketCount > 0 ? 
+  
+            <ServerSideTable
+            tableColumns={columns}
+            tableData={ticketList}
+            totalDataCount={ticketCount}
+            pageSizes={[10, 50, 100]}
+            defaultSortBy={[{id: 'ticket_id', desc: true}]}
+            getTableInfo={info => setTableInfo(info)}
+            tableStyle={{backgroundColor: "red"}}
+            language='en'
+            />
+    
+            : <></>
+  
+        }
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+      </div>
+    );
 
-### `npm run eject`
+  }
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+``tableInfo`` state returns:
+```js
+{sortBy: 'ticket_id', sortDir: 'desc', pageIndex: 1, pageSize: 10, searchText: ''}
+```
+So you can use this information and fetch new data from your server.
