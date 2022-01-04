@@ -1,3 +1,3 @@
-import React, { Component } from 'react'
+import ServerSideTable from './table/ServerSideTable';
 
-export {default as ServerSideTable} from './table/ServerSideTable';
+export default ServerSideTable;
