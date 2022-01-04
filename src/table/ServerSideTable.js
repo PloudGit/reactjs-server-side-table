@@ -17,7 +17,7 @@ import React, {
   
   export default function ServerSideTable({
     tableColumns,
-    pageSizes,
+    pageSizes=[10, 20, 30, 40, 50],
     tableData,
     totalDataCount,
     defaultSortBy=[{id: tableColumns[0].accessor, desc: false}],
