@@ -4,7 +4,7 @@ module.exports = {
   mode: "production",
   entry: "./src/index.js",
   output: {
-    path: path.resolve("build"),
+    path: path.resolve("dist"),
     filename: "index.js",
     libraryTarget: "commonjs2"
   },
@@ -19,7 +19,7 @@ module.exports = {
         loader: "css-loader"
       },
       {
-        test: path.join(__dirname, '.'),
+        test: /\.(js|jsx)$/,
         exclude: /(node_modules)/,
         loader: 'babel-loader',
         options: {

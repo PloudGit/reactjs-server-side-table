@@ -1,9 +1,9 @@
 {
   "name": "reactjs-server-side-table",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "private": false,
   "description": "A server side table for React",
-  "main": "./src/table/ServerSideTable.js",
+  "main": "./dist/index.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
