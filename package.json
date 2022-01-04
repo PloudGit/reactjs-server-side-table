@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "set PORT=3004 && react-scripts start",
-    "build": "rm -rf dist && NODE_ENV=production npx babel src/table --out-dir dist --copy-files",
+    "build": "NODE_ENV=production npx babel src/table --out-dir dist --copy-files",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

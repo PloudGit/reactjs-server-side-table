@@ -3,7 +3,8 @@ import React, {
     useState,
     useMemo,
     useImperativeHandle,
-    useRef
+    useRef,
+    Fragment
   } from 'react';
   import { usePrevious } from '../custom_hooks/usePrevious';
   import {
@@ -108,12 +109,12 @@ import React, {
       <div>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossOrigin="anonymous"/>
         {loading ? (
-          <></>
+          <Fragment />
         ) : (
           <div>
             <div>
               {
-                tableData.length <= 0 ? <></> :
+                tableData.length <= 0 ? <Fragment /> :
              
               <div>
                 <div
