@@ -77,7 +77,7 @@ import ServerSideTable from 'reactjs-server-side-table';
             pageSizes={[10, 50, 100]}
             defaultSortBy={[{id: 'ticket_id', desc: true}]}
             getTableInfo={info => setTableInfo(info)}
-            tableStyle={{backgroundColor: "red"}}
+            tableStyle={{backgroundColor: "#bbbbbb"}}
             language='en'
             />
     
@@ -91,9 +91,14 @@ import ServerSideTable from 'reactjs-server-side-table';
   }
 
 ```
+You can fetch your data with the current tableInfo state from your server.
 
-``tableInfo`` state returns:
+### Table Information
+``tableInfo`` state returns this:
 ```js
-{sortBy: 'ticket_id', sortDir: 'desc', pageIndex: 1, pageSize: 10, searchText: ''}
+{sortBy: 'ticket_id', sortDir: 'desc', pageIndex: 3, pageSize: 10, searchText: '2'}
 ```
-So you can use this information and fetch new data from your server.
+``totalDataCount`` = 41
+
+for a table like this:
+![table](https://i.imgur.com/dsxxk2w.png=500x250)

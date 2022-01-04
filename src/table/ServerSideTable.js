@@ -28,7 +28,7 @@ import React, {
     tbodyStyle={},
     trStyle={},
     tdStyle={},
-    language="tr"
+    language="en"
   }) {
   
     const columns = useMemo(() => tableColumns, [])
