@@ -1,7 +1,7 @@
 {
   "name": "reactjs-server-side-table",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
@@ -35,5 +35,23 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PloudGit/reactjs-server-side-table.git"
+  },
+  "keywords": [
+    "react",
+    "server-side",
+    "table"
+  ],
+  "author": "ploud",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PloudGit/reactjs-server-side-table/issues"
+  },
+  "homepage": "https://github.com/PloudGit/reactjs-server-side-table#readme"
 }
