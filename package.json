@@ -1,6 +1,6 @@
 {
   "name": "reactjs-server-side-table",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": false,
   "description": "A server side table for React",
   "main": "./src/table/ServerSideTable.js",
